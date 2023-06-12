@@ -1,9 +1,32 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import './edit.css';
 import 'tui-image-editor/dist/tui-image-editor.css';
 import ImageEditor from '@toast-ui/react-image-editor';
+import { useParams } from 'react-router-dom';
 
 const Edit = () => {
+
+    const { id } = useParams();
+    const [meme, setMeme] = useState(null);
+
+    useEffect(() => {
+        fetch('http://localhost:3001/api/memes')
+            .then(response => response.json())
+            .then(data => {
+                // Find the meme by id
+                const foundMeme = data.find(meme => meme.id === id);
+                setMeme(foundMeme);
+            })
+            .catch(error => {
+                console.error('Error fetching meme data:', error);
+            });
+    }, [id]);
+
+    if (!meme) {
+        return <div>Loading...</div>;
+
+    }
+
     return (
         <>
             <header>
@@ -17,7 +40,7 @@ const Edit = () => {
                 <ImageEditor
                     includeUI={{
                         loadImage: {
-                            path: './logo512.png',
+                            path: meme.url,
                             name: 'SampleImage',
                         },
                         theme: {},
@@ -35,7 +58,7 @@ const Edit = () => {
                         cornerSize: 20,
                         rotatingPointOffset: 70,
                     }}
-                    usageStatistics={true}
+                    usageStatistics={false}
                 />
             </div>
         </>
