@@ -3,12 +3,26 @@ const path = require('path');
 const fs = require('fs');
 const jsonServer = require('json-server');
 const cors = require('cors');
+const mongoose = require('mongoose');
 
 
 
 
 const app = express();
 const port = process.env.PORT || 3001;
+
+
+mongoose.connect("mongodb://127.0.0.1:27017/Memes", {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+})
+.then(() => {
+  console.log('Connexion à MongoDB réussie !');
+})
+.catch((error) => {
+  console.log('Erreur lors de la connexion à MongoDB :', error);
+});
+
 
 // Enable CORS for all routes
 
