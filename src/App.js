@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import Edit from './Pages/Edit/Edit'
 import Meme from './Pages/Meme/Meme'
