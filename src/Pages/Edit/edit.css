@@ -37,3 +37,23 @@ header {
         height: 68vh;
     }
 }
+.tui-image-editor-header { display: none; } 
+.tui-image-editor-container 
+.tui-image-editor-main { top: 0; }
+
+.button {
+    position: absolute;
+    top: 50%;
+    right: 200px;
+    transform: translateY(-50%);
+}
+
+.button button {
+    /* Add your styles for the button here */
+    background-color: #f4bc14;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 20px;
+    cursor: pointer;
+}
