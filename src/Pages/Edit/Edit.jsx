@@ -28,6 +28,7 @@ const Edit = () => {
     }
 
     const handleDownloadClick = () => {
+        console.log('Image editor ref', imageEditorRef);
         const imageEditorInstance = imageEditorRef.current?.getInstance();
         if (imageEditorInstance) {
             const canvasData = imageEditorInstance.toDataURL({
@@ -77,6 +78,7 @@ const Edit = () => {
             </div>
             <div className="editor">
                 <ImageEditor
+                    ref={imageEditorRef}
                     includeUI={{
                         loadImage: {
                             path: meme.url,

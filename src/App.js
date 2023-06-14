@@ -1,7 +1,7 @@
 import './App.css';
 import Edit from './Pages/Edit/Edit'
 import Meme from './Pages/Meme/Meme'
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import { useState } from 'react';
 
 function App() {
