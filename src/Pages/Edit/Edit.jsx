@@ -1,19 +1,20 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import './edit.css';
 import 'tui-image-editor/dist/tui-image-editor.css';
 import ImageEditor from '@toast-ui/react-image-editor';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 
 const Edit = () => {
-
     const { id } = useParams();
+    const imageEditorRef = useRef(null);
+    const fileInputRef = useRef(null);
     const [meme, setMeme] = useState(null);
+    const navigate = useNavigate();
 
     useEffect(() => {
         fetch('http://localhost:3001/api/memes')
             .then(response => response.json())
             .then(data => {
-                // Find the meme by id
                 const foundMeme = data.find(meme => meme.id === id);
                 setMeme(foundMeme);
             })
@@ -24,8 +25,44 @@ const Edit = () => {
 
     if (!meme) {
         return <div>Loading...</div>;
-
     }
+
+    const handleDownloadClick = () => {
+        console.log('Image editor ref', imageEditorRef);
+        const imageEditorInstance = imageEditorRef.current?.getInstance();
+        if (imageEditorInstance) {
+            const canvasData = imageEditorInstance.toDataURL({
+                format: 'jpeg',
+                quality: 0.8,
+            });
+
+            const downloadLink = document.createElement('a');
+            downloadLink.href = canvasData;
+            downloadLink.download = `edited_meme_${meme.id}.jpeg`;
+            downloadLink.target = '_blank';
+
+            downloadLink.click();
+        }
+    };
+
+    const Loadimagefromdir = (event) => {
+        const file = event.target.files[0];
+        const reader = new FileReader();
+
+        reader.onload = (e) => {
+            const imageEditorInstance = imageEditorRef.current?.getInstance();
+            if (imageEditorInstance) {
+                imageEditorInstance.loadImageFromURL(e.target.result, 'SampleImage');
+            }
+        };
+
+        reader.readAsDataURL(file);
+    };
+
+    const handleBackClick = memeId => {
+        navigate('/');
+        //window.open(`/edit/${memeId}`, "_blank");    
+    };
 
     return (
         <>
@@ -36,8 +73,12 @@ const Edit = () => {
                     <h5 className="text-light">Add custom quotes, etc.</h5>
                 </div>
             </header>
+            <div className="back">
+                <button onClick={handleBackClick}>Go back</button>
+            </div>
             <div className="editor">
                 <ImageEditor
+                    ref={imageEditorRef}
                     includeUI={{
                         loadImage: {
                             path: meme.url,
@@ -60,9 +101,14 @@ const Edit = () => {
                     }}
                     usageStatistics={false}
                 />
+                <div className="button">
+                    <input type="file" accept="image/*" onChange={Loadimagefromdir} ref={fileInputRef} style={{ display: "none" }} />
+                    <button onClick={() => fileInputRef.current.click()}>Load Image</button>
+                    <button onClick={handleDownloadClick}>Download</button>
+                </div>
             </div>
         </>
     )
 }
 
-export default Edit
+export default Edit;

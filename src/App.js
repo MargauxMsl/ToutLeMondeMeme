@@ -1,8 +1,7 @@
-import logo from './logo.svg';
 import './App.css';
 import Edit from './Pages/Edit/Edit'
 import Meme from './Pages/Meme/Meme'
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import { useState } from 'react';
 
 function App() {
@@ -19,7 +18,7 @@ function App() {
 
   return (
     <div className={`App ${theme}`}>
-      <div className='button'>
+      <div className='darkmodebutton'>
         <button name='darkmode' onClick={toggleTheme}>
           Switch to {theme === 'light' ? 'Dark Mode' : 'Light Mode'}
         </button>
