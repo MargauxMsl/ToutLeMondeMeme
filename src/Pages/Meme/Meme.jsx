@@ -29,6 +29,7 @@
   import axios from 'axios';
   import './meme.css';
   import { Link, useNavigate } from 'react-router-dom';
+  import UploadIcon from '@mui/icons-material/Upload';
   
   
   function MemeComponent() {
@@ -89,6 +90,9 @@
           link.remove();
         });
     };
+    const handleUploadClick = () => {
+      navigate('/upload'); // Redirige vers la route '/upload'
+    };
   
     const handleEditClick = memeId => {
       navigate(`/edit/${memeId}`);
@@ -109,6 +113,7 @@
           <button type="submit">
             <img src={require('./search.png')} alt="Logo" height="60px" width="60px" />
           </button>
+          <UploadIcon onClick={handleUploadClick} fontSize="large"  />
         </div>
   
         <div className="meme-grid">

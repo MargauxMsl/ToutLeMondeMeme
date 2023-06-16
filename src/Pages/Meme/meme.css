@@ -34,6 +34,10 @@
   ::placeholder{
     color: #3c3c41;
   }
+  .search_bar svg {
+    color: #000000;
+    margin-left:"50px";
+  }
   .search_bar button{
   border: 0;
   border-radius: 50%;
@@ -42,6 +46,7 @@
   background: #aabd9e;
   cursor: pointer;
 }
+
 
 .meme-grid {
   display: grid;
@@ -105,3 +110,4 @@
 .meme-buttons button:hover {
   background-color: #45a049;
 }
+
