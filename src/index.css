@@ -11,123 +11,69 @@
 }
 
 :root {
-  --color-bg: #1f1f38;
-  --color-bg-variant: #2c2c6c;
-  --color-primary: #54b9d4;
-  --color-primary-variant: rgba(77, 181, 255, 0.4);
+  --color-bg1: rgba(217, 170, 0, 0.55);
+  --color-bg2: rgba(228, 34, 4, 0.55);
+  --color-bg-light: rgb(253, 237, 179);
   --color-white: #fff;
   --color-light: rgba(255, 255, 255, 0.6);
+  --color-black: rgb(0, 0, 0, 0.6);
 
   --transition: all 400ms ease;
 
-  --container-width-lg: 75%;
+  --container-width-lg: 100%;
+  --container-height-lg: 800px;
   --container-width-md: 86%;
   --container-width-sm: 90%;
 }
 
 body {
   font-family: "Poppins", sans-serif;
-  background-image: linear-gradient(
-      rgba(71, 186, 194, 0.5),
-      rgba(59, 78, 135, 0.5)
-    ),
-    url("https://static.vecteezy.com/ti/vecteur-libre/p2/2774047-motif-geometrique-de-abstrait-dore-triangle-sans-couture-vecteur-fond-avec-geometrie-or-chevron-motif-texture-pour-toile-de-fond-tuile-modele-conception-vectoriel.jpg");
-  background-color: var(--color-bg);
+  background-color: var(--color-bg-light);
   color: var(--color-white);
   line-height: 1.7;
 }
 
 .container {
   width: var(--container-width-lg);
+  height: var(--container-height-lg);
   margin: 0 auto;
+  height: 200px;
+  position:fixed;
+  top: 0px;
+  z-index:1;
+  background-image: linear-gradient(var(--color-bg1), var(--color-bg2)),
+    url("https://images.pexels.com/photos/4587828/pexels-photo-4587828.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2");
+  background-color: var(--color-bg1);
 }
-
-h1,
-h2,
-h3,
-h4,
-h5 {
+header .container h1,h5{
+ 
+  font-size: 1.15rem;
   font-weight: 500;
+  font-style: bold;
+  color: #fff;
 }
 
-h1 {
+header .container h1 {
   font-size: 2.5rem;
+  margin-bottom: 20px;
+  margin-top: 30px;
 }
 
 section {
   margin-top: 8rem;
 }
 
-section > h2,
 section > h5 {
   text-align: center;
   color: var(--color-light);
-}
-
-section > h2 {
-  color: var(--color-primary);
-  margin-bottom: 3rem;
 }
 
 .text-light {
   color: var(--color-light);
 }
 
-a {
-  color: var(--color-primary);
-  transition: var(--transition);
-}
-
-a:hover {
-  color: var(--color-white);
-}
-
-.btn {
-  width: max-content;
-  display: inline-block;
-  color: var(--color-primary);
-  padding: 0.75rem 1.2rem;
-  border-radius: 0.4rem;
-  cursor: pointer;
-  border: 1px solid var(--color-primary);
-  transition: var(--transition);
-}
-
-.btn:hover {
-  background: var(--color-white);
-  color: var(--color-bg);
-  border-color: transparent;
-}
-
-.btn-primary {
-  background: var(--color-primary);
-  color: var(--color-bg);
-}
-
-img {
-  display: block;
-  width: 100%;
-  object-fit: cover;
-}
-
-/* =================== MEDIA QUERIES (MEDIUM DEVICES) =================== */
-@media screen and (max-width: 1024px) {
-  .container {
-    width: var(--container-width-md);
-  }
-
-  section {
-    margin-top: 6rem;
-  }
-}
-
-/* =================== MEDIA QUERIES (SMALL DEVICES) =================== */
-@media screen and (max-width: 600px) {
-  .container {
-    width: var(--container-width-sm);
-  }
-
-  section > h2 {
-    margin-top: 2rem;
-  }
+.names {
+  color: var(--color-black);
+  font-size: 1rem;
+  font-weight: bold;
 }

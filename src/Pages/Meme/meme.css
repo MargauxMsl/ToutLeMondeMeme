@@ -1,45 +1,56 @@
-.memes-container {
-    display: flex;
-    flex-wrap: wrap;
- }
- 
+:root {
+  --color-bg1: rgba(217, 170, 0, 0.55);
+  --color-bg2: rgba(228, 34, 4, 0.55);
+  --color-white: #fff;
+  --color-light: rgba(255, 255, 255, 0.6);
+  --color-button: rgba(188, 148, 3, 0.9);
 
-  .meme-image {
-    width: 100%;
-    height: auto;
-  }
-  .search_bar{
-    margin-top: 100px;
-    margin-left: 400px;
-    display: flex;
-    align-items: center;
-    justify-items: center;
-    width: 100%;
-    max-width: 700px;
-    background: #c5deb4;
-    display: flex;
-    align-items: center;
-    border-radius: 60px;
-    padding: 10px 20px;
-  }
-  .search_bar input{
-    background: transparent;
-    flex: 1;
-    border: 0;
-    outline: none;
-    padding: 24px 20px;
-    font-size: 20px;
-    color: #3c3c41;
-  }
-  ::placeholder{
-    color: #3c3c41;
-  }
-  .search_bar button{
+  --transition: all 400ms ease;
+
+  --container-width-lg: 75%;
+  --container-width-md: 86%;
+  --container-width-sm: 90%;
+}
+
+.memes-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.meme-image {
+  width: 100%;
+  height: auto;
+}
+.search_bar {
+  margin-left: 500px;
+  top: 0px;
+  display: flex;
+  align-items: center;
+  justify-items: center;
+  width: 100%;
+  max-width: 700px;
+  background: var(--color-bg1);
+  border-radius: 60px;
+  padding: 10px 20px;
+}
+.search_bar input {
+  background: transparent;
+  flex: 1;
+  border: 0;
+  outline: none;
+  padding: 24px 20px;
+  font-size: 20px;
+  color: var(--color-white);
+}
+::placeholder {
+  color: var(--color-light);
+}
+.search_bar button {
   border: 0;
   border-radius: 50%;
   width: 60px;
   height: 60px;
-  background: #aabd9e;
+  background: var(--color-button);
   cursor: pointer;
 }
 
@@ -50,7 +61,8 @@
 }
 
 .meme-item {
-  position: relative;
+  z-index: 0;
+  position:relative;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -62,14 +74,10 @@
 }
 .meme-item:hover {
   background-color: none;
-  
- 
 }
 
 .meme-item.clicked {
   background-color: none;
- 
-  
 }
 
 .meme-item h2 {
@@ -95,7 +103,7 @@
   padding: 8px 16px;
   font-size: 14px;
   border-radius: 5px;
-  background-color: #4caf50;
+  background-color: var(--color-button);
   color: #fff;
   border: none;
   cursor: pointer;
@@ -103,5 +111,5 @@
 }
 
 .meme-buttons button:hover {
-  background-color: #45a049;
+  background-color: var(--color-bg2);
 }

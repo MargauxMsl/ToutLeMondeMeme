@@ -25,7 +25,6 @@ const Edit = () => {
   if (!meme) {
     return <div>Loading...</div>;
   }
-
   const handleDownloadClick = () => {
     const imageEditorInstance = imageEditorRef.current?.getInstance();
     if (imageEditorInstance) {
@@ -62,9 +61,8 @@ const Edit = () => {
       <header>
         <div className="container edit__container">
           <h5>Edit</h5>
-          <h1>your meme</h1>
+          <h1>YOUR MEME</h1>
           <h5 className="text-light">Add custom quotes, etc.</h5>
-          
         </div>
       </header>
       <div className="editor">

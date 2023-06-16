@@ -1,3 +1,17 @@
+:root {
+  --color-bg1: rgba(217, 170, 0, 0.55);
+  --color-bg2: rgba(228, 34, 4, 0.55);
+  --color-white: #fff;
+  --color-light: rgba(255, 255, 255, 0.6);
+  --color-button: rgba(188, 148, 3, 0.9);
+
+  --transition: all 400ms ease;
+
+  --container-width-lg: 75%;
+  --container-width-md: 86%;
+  --container-width-sm: 90%;
+}
+
 .App {
   text-align: center;
 }
@@ -28,6 +42,31 @@
   color: #61dafb;
 }
 
+.dark-buttons {
+  position: fixed;
+  margin-top: 70px;
+  z-index: 2;
+  right: 0;
+  margin-right: 30px;
+}
+
+.dark-buttons button {
+ 
+  padding: 8px 16px;
+  font-size: 18px;
+  border-radius: 5px;
+  background-color: var(--color-button);
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;  
+  justify-items: right;
+}
+
+.dark-buttons button:hover {
+  background-color: var(--color-bg2);
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
@@ -36,3 +75,13 @@
     transform: rotate(360deg);
   }
 }
+
+.dark {
+  background-color: #333;
+  color:#fff;
+}
+.light {
+  background-color: rgb(253, 237, 179);
+  color: #333;
+}
+
