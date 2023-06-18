@@ -4,6 +4,8 @@
   --color-white: #fff;
   --color-light: rgba(255, 255, 255, 0.6);
   --color-button: rgba(188, 148, 3, 0.9);
+  --color-text-light: rgba(255, 255, 255, 0.9); /* New variable for light text color */
+  --color-text-dark: rgba(0, 0, 0, 0.9); /* New variable for dark text color */
 
   --transition: all 400ms ease;
 
@@ -78,10 +80,17 @@
 
 .dark {
   background-color: #333;
-  color:#fff;
-}
-.light {
-  background-color: rgb(253, 237, 179);
-  color: #333;
+  color: var(--color-text-light); /* Set the text color for dark mode */
 }
 
+.light {
+  background-color: rgb(253, 237, 179);
+  color: var(--color-text-dark); /* Set the text color for light mode */
+}
+.dark .names {
+  color: var(--color-text-light); /* Set the text color for dark mode */
+}
+
+.light .names {
+  color: var(--color-text-dark); /* Set the text color for light mode */
+}
