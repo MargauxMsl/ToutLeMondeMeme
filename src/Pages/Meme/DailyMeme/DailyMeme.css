@@ -43,6 +43,7 @@
     animation-name: zoom;
     animation-duration: 0.6s;
     align-items: center;
+    vertical-align: center;
     border-radius: 5px;
     cursor: pointer;
     transition: 0.3s;
@@ -54,11 +55,13 @@
 .modal-title {
     display: block;
     width: 80%;
+    font-family: "Lucida Handwriting";
     max-width: 700px;
     text-align: center;
     color: #ccc;
     padding: 10px 0;
     height: 50px;
+    margin : auto;
     margin-left: auto;
     margin-right: auto;
 
@@ -86,7 +89,7 @@
     cursor: pointer;
 }
 
-/*
+
 .overlay {
     position: relative;
     bottom: 0;
@@ -103,7 +106,7 @@
     width: 100%;
 }
 
-*/
+
 
 .text {
     white-space: nowrap; 
@@ -118,6 +121,7 @@
   }
 
   .container {
+    margin-top: 50px;
     position: relative;
     width: 50%;
   }
@@ -126,6 +130,7 @@
     display: block;
     width: 100%;
     height: auto;
+    margin: auto;
   }
   
   .overlay {

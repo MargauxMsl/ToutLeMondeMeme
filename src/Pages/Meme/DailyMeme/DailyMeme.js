@@ -32,7 +32,7 @@ const Modal = ({dailyMeme}) => {
                   <h1 className='modal-title'>Today's Meme !</h1>
               </div>
               <div className='modal-body'>
-              <div className="container">
+              <div className="modal-container">
                 {Object.keys(dailyMeme).length > 0 ? (
                   <>
                     <img
