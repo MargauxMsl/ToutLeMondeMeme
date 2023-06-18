@@ -1,16 +1,7 @@
-header {
-  margin-top: 20px;
-  height: 40vh;
-  overflow: hidden;
-}
-
 .edit__container {
   text-align: center;
   height: 100%;
   position: fixed;
-}
-.edit__container h5 {
-  margin-top: 10px;
 }
 
 .cta {

@@ -13,6 +13,13 @@
   }
 }
 
+header {
+  padding-top: 0;
+  height: 45vh;
+  margin-top: 0;
+  overflow: hidden;
+}
+
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
