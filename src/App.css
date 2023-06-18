@@ -1,25 +1,3 @@
-:root {
-  --color-bg1: rgba(217, 170, 0, 0.55);
-  --color-bg2: rgba(228, 34, 4, 0.55);
-  --color-bg3: rgb(253, 237, 179);
-  --color-button: rgba(188, 148, 3, 0.9);
-
-  --color-bg1-dark: rgba(45, 76, 122, 0.8);
-  --color-bg2-dark: rgba(0, 0, 0, 0.8);
-  --color-bg3-dark: rgb(35, 35, 35);
-  --color-button-dark: rgba(188, 148, 3, 0.9);
-
-  --color-white: #fff;
-  --color-text-light: rgba(255, 255, 255, 0.9);
-  --color-text-dark: rgba(0, 0, 0, 0.9); /* New variable for dark text color */
-
-  --transition: all 400ms ease;
-
-  --container-height-lg: 310px;
-  --container-width-md: 86%;
-  --container-width-sm: 90%;
-}
-
 .App {
   text-align: center;
 }
@@ -58,22 +36,6 @@
   margin-right: 30px;
 }
 
-.dark-buttons button {
-  padding: 8px 16px;
-  font-size: 18px;
-  border-radius: 5px;
-  background-color: var(--color-button);
-  color: #fff;
-  border: none;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-  justify-items: right;
-}
-
-.dark-buttons button:hover {
-  background-color: var(--color-bg2);
-}
-
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
@@ -98,10 +60,10 @@
 
 /*En-tête de la page principale*/
 .light .container {
+  position: sticky;
   width: 100%;
   height: var(--container-height-lg);
   margin: 0 auto;
-  position: fixed;
   top: 0px;
   z-index: 1;
   background-image: linear-gradient(var(--color-bg1), var(--color-bg2)),
@@ -110,10 +72,10 @@
 }
 
 .dark .container {
+  position: sticky;
   width: 100%;
   height: var(--container-height-lg);
   margin: 0 auto;
-  position: fixed;
   top: 0px;
   z-index: 1;
   background-image: linear-gradient(
@@ -141,10 +103,78 @@
   width: 420px;
 }
 
+/*Barre de recherche*/
+.light .search_bar {
+  background-color: var(--color-bg1);
+}
+
+.dark .search_bar {
+  background-color: var(--color-bg1-dark);
+}
+
+.light .search_bar button {
+  background-color: var(--color-button);
+}
+
+.dark .search_bar button {
+  background-color: var(--color-button-dark);
+}
+
+/*Noms des Memes*/
 .dark .names {
   color: var(--color-text-light); /* Set the text color for dark mode */
 }
 
 .light .names {
   color: var(--color-text-dark); /* Set the text color for light mode */
+}
+
+/*Bouton darkmode*/
+.light .dark-buttons button {
+  padding: 8px 16px;
+  font-size: 18px;
+  border-radius: 5px;
+  background-color: var(--color-button);
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  justify-items: right;
+}
+
+.light .dark-buttons button:hover {
+  background-color: var(--color-bg2);
+}
+
+.dark .dark-buttons button {
+  padding: 8px 16px;
+  font-size: 18px;
+  border-radius: 5px;
+  background-color: var(--color-button-dark);
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  justify-items: right;
+}
+
+.dark .dark-buttons button:hover {
+  background-color: var(--color-bg2-dark);
+}
+
+/*Boutons*/
+.light .meme-buttons button {
+  background-color: var(--color-button);
+}
+
+.light .meme-buttons button:hover {
+  background-color: var(--color-bg2);
+}
+
+.dark .meme-buttons button {
+  background-color: var(--color-button-dark);
+}
+
+.dark .meme-buttons button:hover {
+  background-color: var(--color-bg2-dark);
 }
