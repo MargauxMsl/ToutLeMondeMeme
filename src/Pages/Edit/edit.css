@@ -1,12 +1,21 @@
 :root {
   --color-bg1: rgba(217, 170, 0, 0.55);
   --color-bg2: rgba(228, 34, 4, 0.55);
+  --color-bg3: rgb(253, 237, 179);
+  --color-button: rgba(188, 148, 3, 0.9);
+
+  --color-bg1-dark: rgba(45, 76, 122, 0.8);
+  --color-bg2-dark: rgba(0, 0, 0, 0.8);
+  --color-bg3-dark: rgb(35, 35, 35);
+  --color-button-dark: rgba(188, 148, 3, 0.9);
+
   --color-white: #fff;
-  --color-light: rgba(255, 255, 255, 0.6);
+  --color-text-light: rgba(255, 255, 255, 0.9);
+  --color-text-dark: rgba(0, 0, 0, 0.9); /* New variable for dark text color */
 
   --transition: all 400ms ease;
 
-  --container-width-lg: 75%;
+  --container-height-lg: 310px;
   --container-width-md: 86%;
   --container-width-sm: 90%;
 }
@@ -20,9 +29,9 @@ header {
 .edit__container {
   text-align: center;
   height: 100%;
-  position:fixed;
+  position: fixed;
 }
-.edit__container h5{
+.edit__container h5 {
   margin-top: 10px;
 }
 
@@ -49,13 +58,16 @@ header {
 
 /* =================== MEDIA QUERIES (SMALL DEVICES) =================== */
 @media screen and (max-width: 600px) {
-    header {
-        height: 68vh;
-    }
+  header {
+    height: 68vh;
+  }
 }
-.tui-image-editor-header { display: none; } 
-.tui-image-editor-container 
-.tui-image-editor-main { top: 0; }
+.tui-image-editor-header {
+  display: none;
+}
+.tui-image-editor-container .tui-image-editor-main {
+  top: 0;
+}
 .button {
   position: absolute;
   top: 55%;
@@ -73,4 +85,3 @@ header {
   cursor: pointer;
   margin-left: 20px;
 }
-

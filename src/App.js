@@ -23,7 +23,6 @@ function App() {
       <div className="dark-buttons">
         <button name="darkmode" onClick={toggleTheme}>
           Switch to {theme === "light" ? "Dark Mode" : "Light Mode"}
-
         </button>
       </div>
 
