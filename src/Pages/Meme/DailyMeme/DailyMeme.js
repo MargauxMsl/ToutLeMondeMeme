@@ -29,7 +29,7 @@ const Modal = ({dailyMeme}) => {
           <span className="close" onClick={handleClose}>&times;</span>
           <div className='modal-content'>
               <div className='modal-header'>
-                  <h1 className='modal-title'>Today's Meme !</h1>
+                  <h1 className='modal-title'>Today's Meme :</h1>
               </div>
               <div className='modal-body'>
               <div className="modal-container">
