@@ -38,7 +38,7 @@ function MemeComponent() {
 
   useEffect(() => {
     axios
-      .get("https://localhost:3001/api/memes")
+      .get("http://localhost:3001/api/memes")
       .then((response) => {
         const fetchedMemes = response.data;
         const formattedMemes = fetchedMemes.map((meme) => ({

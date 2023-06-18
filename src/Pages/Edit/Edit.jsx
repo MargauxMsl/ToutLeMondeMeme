@@ -11,7 +11,7 @@ const Edit = () => {
   const [meme, setMeme] = useState(null);
 
   useEffect(() => {
-    fetch("https://localhost:3001/api/memes")
+    fetch("http://localhost:3001/api/memes")
       .then((response) => response.json())
       .then((data) => {
         const foundMeme = data.find((meme) => meme.id === id);
