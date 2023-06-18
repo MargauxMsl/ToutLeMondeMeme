@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import '../App.css';
+import '../../../App.css';
 import './DailyMeme.css';
 
 
@@ -18,9 +18,15 @@ function GetDailyMeme() {
 }
 
 const Modal = ({dailyMeme}) => {
+  const handleClose = () => {
+    const modal = document.querySelector(".modal");
+    if (modal) {
+      modal.style.display = "none";
+    }
+  };
   return(
       <div className="modal">
-          <span className="close">&times;</span>
+          <span className="close" onClick={handleClose}>&times;</span>
           <div className='modal-content'>
               <div className='modal-header'>
                   <h1 className='modal-title'>Today's Meme !</h1>

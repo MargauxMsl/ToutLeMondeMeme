@@ -101,7 +101,7 @@
   width: 100%;
   height: var(--container-height-lg);
   margin: 0 auto;
-  position: fixed;
+  position: sticky;
   top: 0px;
   z-index: 1;
   background-image: linear-gradient(var(--color-bg1), var(--color-bg2)),
@@ -113,7 +113,7 @@
   width: 100%;
   height: var(--container-height-lg);
   margin: 0 auto;
-  position: fixed;
+  position: sticky;
   top: 0px;
   z-index: 1;
   background-image: linear-gradient(
