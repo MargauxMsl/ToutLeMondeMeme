@@ -28,7 +28,6 @@ const Edit = () => {
     }
 
     const handleDownloadClick = () => {
-        console.log('Image editor ref', imageEditorRef);
         const imageEditorInstance = imageEditorRef.current?.getInstance();
         if (imageEditorInstance) {
             const canvasData = imageEditorInstance.toDataURL({
@@ -36,6 +35,26 @@ const Edit = () => {
                 quality: 0.8,
             });
 
+            // Send the edited image data to the server
+            fetch('http://localhost:3001/api/memes/store', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ id: meme.id, image: canvasData }),
+            })
+                .then(response => {
+                    if (response.ok) {
+                        console.log('Edited meme stored successfully');
+                    } else {
+                        console.error('Failed to store edited meme:', response.status);
+                    }
+                })
+                .catch(error => {
+                    console.error('Error storing edited meme:', error);
+                });
+
+            // Download the edited image
             const downloadLink = document.createElement('a');
             downloadLink.href = canvasData;
             downloadLink.download = `edited_meme_${meme.id}.jpeg`;
@@ -44,6 +63,7 @@ const Edit = () => {
             downloadLink.click();
         }
     };
+      
 
     const Loadimagefromdir = (event) => {
         const file = event.target.files[0];
