@@ -27,6 +27,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "./meme.css";
 import { Link, useNavigate } from "react-router-dom";
+import "./logo-lightmode.png";
 
 function MemeComponent() {
   const navigate = useNavigate();
@@ -37,7 +38,7 @@ function MemeComponent() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:3001/api/memes")
+      .get("https://gr66gp-3001.csb.app/api/memes")
       .then((response) => {
         const fetchedMemes = response.data;
         const formattedMemes = fetchedMemes.map((meme) => ({
@@ -98,8 +99,16 @@ function MemeComponent() {
     <>
       <header>
         <div className="container edit__container">
-          <h1>Tout le monde Meme</h1>
-          <h5 className="text-light">Créations et personnalisations</h5>
+          <img
+            src={require("./logo-lightmode.png")}
+            alt="logo"
+            class="black-logo"
+          />
+          <img
+            src={require("./logo-darkmode.png")}
+            alt="logo"
+            class="white-logo"
+          />
         </div>
       </header>
       <div className="meme-container">
