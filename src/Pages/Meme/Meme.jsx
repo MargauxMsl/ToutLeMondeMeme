@@ -1,28 +1,27 @@
- //to push data , firstly, create memeData
+//to push data , firstly, create memeData
 
-  // const createMeme = async (memeData) => {
-  //   try {
-  //     const response = await axios.post('http://localhost:3000/memes', memeData);
-  //     console.log('Meme created:', response.data);
-  //     // Perform any necessary actions after successful creation
-  //   } catch (error) {
-  //     console.error('Error creating meme:', error);
-  //     // Handle error if creation fails
-  //   }
-  // };
+// const createMeme = async (memeData) => {
+//   try {
+//     const response = await axios.post('http://localhost:3000/memes', memeData);
+//     console.log('Meme created:', response.data);
+//     // Perform any necessary actions after successful creation
+//   } catch (error) {
+//     console.error('Error creating meme:', error);
+//     // Handle error if creation fails
+//   }
+// };
 
-
-  //to modify data, firstly, create updateData and give memeID
-  // const updateMeme = async (memeId, updatedData) => {
-  //   try {
-  //     const response = await axios.put(`http://localhost:3000/memes/${memeId}`, updatedData);
-  //     console.log('Meme updated:', response.data);
-  //     // Perform any necessary actions after successful update
-  //   } catch (error) {
-  //     console.error('Error updating meme:', error);
-  //     // Handle error if update fails
-  //   }
-  // };
+//to modify data, firstly, create updateData and give memeID
+// const updateMeme = async (memeId, updatedData) => {
+//   try {
+//     const response = await axios.put(`http://localhost:3000/memes/${memeId}`, updatedData);
+//     console.log('Meme updated:', response.data);
+//     // Perform any necessary actions after successful update
+//   } catch (error) {
+//     console.error('Error updating meme:', error);
+//     // Handle error if update fails
+//   }
+// };
 
 
   import React, { useEffect, useState } from 'react';
@@ -30,6 +29,7 @@
   import './meme.css';
   import { Link, useNavigate } from 'react-router-dom';
   import UploadIcon from '@mui/icons-material/Upload';
+  import "./logo-lightmode.png";
   
   
   function MemeComponent() {
@@ -90,6 +90,7 @@
           link.remove();
         });
     };
+
     const handleUploadClick = () => {
       navigate('/upload'); // Redirige vers la route '/upload'
     };
@@ -102,6 +103,21 @@
    
   
     return (
+      <>
+      <header>
+        <div className="container edit__container">
+          <img
+            src={require("./logo-lightmode.png")}
+            alt="logo"
+            class="black-logo"
+          />
+          <img
+            src={require("./logo-darkmode.png")}
+            alt="logo"
+            class="white-logo"
+          />
+        </div>
+      </header>
       <div className="meme-container">
         <div className="search_bar">
           <input
@@ -111,19 +127,26 @@
             onChange={handleSearch}
           />
           <button type="submit">
-            <img src={require('./search.png')} alt="Logo" height="60px" width="60px" />
+            <img
+              src={require("./search.png")}
+              alt="Logo"
+              height="60px"
+              width="60px"
+            />
           </button>
           <UploadIcon onClick={handleUploadClick} fontSize="large"  />
         </div>
-  
+
         <div className="meme-grid">
           {filteredMemes.length > 0 ? (
-            filteredMemes.map(meme => (
+            filteredMemes.map((meme) => (
               <div
-                className={`meme-item ${clickedMemeId === meme.id ? 'clicked' : ''}`}
+                className={`meme-item ${
+                  clickedMemeId === meme.id ? "clicked" : ""
+                }`}
                 key={meme.id}
               >
-                <h2>{meme.name}</h2>
+                <h5 className="names">{meme.name}</h5>
                 <img
                   className="thumbnail"
                   src={meme.url}
@@ -132,9 +155,15 @@
                 />
                 {clickedMemeId === meme.id && (
                   <div className="meme-buttons">
-                    <button onClick={() => handleDownloadClick(meme.url, meme.name)}>Download</button>
+                    <button
+                      onClick={() => handleDownloadClick(meme.url, meme.name)}
+                    >
+                      Download
+                    </button>
                     <Link to={`/edit/${meme.id}`}>
-                    <button onClick={() => handleEditClick(meme.id)}>Edit</button>
+                      <button onClick={() => handleEditClick(meme.id)}>
+                        Edit
+                      </button>
                     </Link>
                   </div>
                 )}
@@ -144,13 +173,9 @@
             <p>No memes found.</p>
           )}
         </div>
-       
-
-  
       </div>
-    );
-  }
-  
-  export default MemeComponent;
-  
-  
+    </>
+  );
+}
+
+export default MemeComponent;

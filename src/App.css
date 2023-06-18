@@ -1,3 +1,25 @@
+:root {
+  --color-bg1: rgba(217, 170, 0, 0.55);
+  --color-bg2: rgba(228, 34, 4, 0.55);
+  --color-bg3: rgb(253, 237, 179);
+  --color-button: rgba(188, 148, 3, 0.9);
+
+  --color-bg1-dark: rgba(45, 76, 122, 0.8);
+  --color-bg2-dark: rgba(0, 0, 0, 0.8);
+  --color-bg3-dark: rgb(35, 35, 35);
+  --color-button-dark: rgba(188, 148, 3, 0.9);
+
+  --color-white: #fff;
+  --color-text-light: rgba(255, 255, 255, 0.9);
+  --color-text-dark: rgba(0, 0, 0, 0.9); /* New variable for dark text color */
+
+  --transition: all 400ms ease;
+
+  --container-height-lg: 310px;
+  --container-width-md: 86%;
+  --container-width-sm: 90%;
+}
+
 .App {
   text-align: center;
 }
@@ -28,6 +50,30 @@
   color: #61dafb;
 }
 
+.dark-buttons {
+  position: fixed;
+  margin-top: 10px;
+  z-index: 2;
+  right: 0;
+  margin-right: 30px;
+}
+
+.dark-buttons button {
+  padding: 8px 16px;
+  font-size: 18px;
+  border-radius: 5px;
+  background-color: var(--color-button);
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  justify-items: right;
+}
+
+.dark-buttons button:hover {
+  background-color: var(--color-bg2);
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
@@ -35,4 +81,70 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+/* ---------------- MODIFICATIONS DARKMODE ---------------------*/
+
+/*Background des deux pages*/
+.dark {
+  background-color: var(--color-bg3-dark);
+  color: var(--color-text-light);
+}
+
+.light {
+  background-color: var(--color-bg3);
+  color: var(--color-text-dark);
+}
+
+/*En-tête de la page principale*/
+.light .container {
+  width: 100%;
+  height: var(--container-height-lg);
+  margin: 0 auto;
+  position: fixed;
+  top: 0px;
+  z-index: 1;
+  background-image: linear-gradient(var(--color-bg1), var(--color-bg2)),
+    url("https://images.pexels.com/photos/4587828/pexels-photo-4587828.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2");
+  background-color: var(--color-bg1);
+}
+
+.dark .container {
+  width: 100%;
+  height: var(--container-height-lg);
+  margin: 0 auto;
+  position: fixed;
+  top: 0px;
+  z-index: 1;
+  background-image: linear-gradient(
+      var(--color-bg1-dark),
+      var(--color-bg2-dark)
+    ),
+    url("https://images.pexels.com/photos/4587828/pexels-photo-4587828.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2");
+  background-color: var(--color-bg1-dark);
+}
+
+/*Logo en haut de la page*/
+.light .black-logo {
+  width: 420px;
+}
+
+.light .white-logo {
+  width: 0%;
+}
+
+.dark .black-logo {
+  width: 0%;
+}
+
+.dark .white-logo {
+  width: 420px;
+}
+
+.dark .names {
+  color: var(--color-text-light); /* Set the text color for dark mode */
+}
+
+.light .names {
+  color: var(--color-text-dark); /* Set the text color for light mode */
 }
