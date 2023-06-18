@@ -23,80 +23,87 @@
 //   }
 // };
 
-import React, { useEffect, useState } from "react";
-import axios from "axios";
-import "./meme.css";
-import { Link, useNavigate } from "react-router-dom";
-import "./logo-lightmode.png";
 
-function MemeComponent() {
-  const navigate = useNavigate();
-  const [memes, setMemes] = useState([]);
-  const [searchQuery, setSearchQuery] = useState("");
-  const [filteredMemes, setFilteredMemes] = useState([]);
-  const [clickedMemeId, setClickedMemeId] = useState(null);
+  import React, { useEffect, useState } from 'react';
+  import axios from 'axios';
+  import './meme.css';
+  import { Link, useNavigate } from 'react-router-dom';
+  import UploadIcon from '@mui/icons-material/Upload';
+  import "./logo-lightmode.png";
+  
+  
+  function MemeComponent() {
+    const navigate = useNavigate()
+    const [memes, setMemes] = useState([]);
+    const [searchQuery, setSearchQuery] = useState('');
+    const [filteredMemes, setFilteredMemes] = useState([]);
+    const [clickedMemeId, setClickedMemeId] = useState(null);
+   
+  
+    useEffect(() => {
+      axios
+        .get("http://localhost:3001/api/memes")
+        .then(response => {
+          const fetchedMemes = response.data;
+          const formattedMemes = fetchedMemes.map(meme => ({
+            ...meme,
+            square: meme.width * meme.height,
+          }));
+          const sortedMemes = formattedMemes.sort((a, b) => a.square - b.square);
+          setMemes(sortedMemes);
+          setFilteredMemes(sortedMemes);
+        })
+        .catch(error => {
+          console.error('Error fetching data:', error);
+        });
+    }, []);
+  
+    const handleSearch = event => {
+      const query = event.target.value;
+      setSearchQuery(query);
+  
+      const filtered = memes.filter(
+        meme => meme && meme.name && meme.name.toLowerCase().includes(query.toLowerCase())
+      );
+      setFilteredMemes(filtered);
+    };
+  
+    const handleMemeClick = memeId => {
+      if (clickedMemeId === memeId) {
+        setClickedMemeId(null);
+      } else {
+        setClickedMemeId(memeId);
+      }
+    };
+  
+    const handleDownloadClick = (memeUrl, memeName) => {
+      fetch(memeUrl)
+        .then(res => res.blob())
+        .then(blob => {
+          const blobURL = window.URL.createObjectURL(new Blob([blob]));
+          const filename = memeName + '.jpg';
+          const link = document.createElement('a');
+          link.href = blobURL;
+          link.setAttribute('download', filename);
+          document.body.appendChild(link);
+          link.click();
+          link.remove();
+        });
+    };
 
-  useEffect(() => {
-    axios
-      .get("http://localhost:3001/api/memes")
-      .then((response) => {
-        const fetchedMemes = response.data;
-        const formattedMemes = fetchedMemes.map((meme) => ({
-          ...meme,
-          square: meme.width * meme.height,
-        }));
-        const sortedMemes = formattedMemes.sort((a, b) => a.square - b.square);
-        setMemes(sortedMemes);
-        setFilteredMemes(sortedMemes);
-      })
-      .catch((error) => {
-        console.error("Error fetching data:", error);
-      });
-  }, []);
-
-  const handleSearch = (event) => {
-    const query = event.target.value;
-    setSearchQuery(query);
-
-    const filtered = memes.filter(
-      (meme) =>
-        meme &&
-        meme.name &&
-        meme.name.toLowerCase().includes(query.toLowerCase())
-    );
-    setFilteredMemes(filtered);
-  };
-
-  const handleMemeClick = (memeId) => {
-    if (clickedMemeId === memeId) {
-      setClickedMemeId(null);
-    } else {
-      setClickedMemeId(memeId);
-    }
-  };
-
-  const handleDownloadClick = (memeUrl, memeName) => {
-    fetch(memeUrl)
-      .then((res) => res.blob())
-      .then((blob) => {
-        const blobURL = window.URL.createObjectURL(new Blob([blob]));
-        const filename = memeName + ".jpg";
-        const link = document.createElement("a");
-        link.href = blobURL;
-        link.setAttribute("download", filename);
-        document.body.appendChild(link);
-        link.click();
-        link.remove();
-      });
-  };
-
-  const handleEditClick = (memeId) => {
-    navigate(`/edit/${memeId}`);
-    //window.open(`/edit/${memeId}`, "_blank");
-  };
-
-  return (
-    <>
+    const handleUploadClick = () => {
+      navigate('/upload'); // Redirige vers la route '/upload'
+    };
+  
+    const handleEditClick = memeId => {
+      navigate(`/edit/${memeId}`);
+      //window.open(`/edit/${memeId}`, "_blank");    
+    };
+  
+   
+  
+    return (
+      <>
       <header>
         <div className="container edit__container">
           <img
@@ -127,6 +134,7 @@ function MemeComponent() {
               width="60px"
             />
           </button>
+          <UploadIcon onClick={handleUploadClick} fontSize="large"  />
         </div>
 
         <div className="meme-grid">

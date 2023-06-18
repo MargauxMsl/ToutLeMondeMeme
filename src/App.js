@@ -1,9 +1,11 @@
-import './App.css';
-import Edit from './Pages/Edit/Edit'
-import Meme from './Pages/Meme/Meme'
-import Modal from './Pages/Meme/DailyMeme/DailyMeme.js'
+import Edit from './Pages/Edit/Edit';
+import Meme from './Pages/Meme/Meme';
+import EditUpload from './Pages/EditUpload/EditUpload';
+import UploadPage from './Pages/UploadMeme/UploadPage';
+import Modal from './Pages/Meme/DailyMeme/DailyMeme';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { useState } from 'react';
+import './App.css';
 
 function App() {
   const [theme, setTheme] = useState("light");
@@ -28,8 +30,10 @@ function App() {
 
       <div className="main">
         <Routes>
-          <Route exact path="/" element={<Meme />} />
-          <Route path="/edit/:id" element={<Edit />} />
+          <Route exact path='/' element={<Meme />} />
+          <Route path='/edit/:id' element={<Edit />} />
+          <Route path='/upload' element={<UploadPage />} />
+          <Route path='/EditUpload/:url' element={<EditUpload />} />
         </Routes>
       </div>
     </div>
