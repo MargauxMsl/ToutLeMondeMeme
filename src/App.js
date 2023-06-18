@@ -2,6 +2,7 @@ import './App.css';
 import Edit from './Pages/Edit/Edit'
 import Meme from './Pages/Meme/Meme'
 import { Routes, Route } from 'react-router-dom';
+import Modal from './DailyMeme/DailyMeme.js'
 import { useState } from 'react';
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
 
   return (
     <div className={`App ${theme}`}>
+      <Modal />
       <div className='darkmodebutton'>
         <button name='darkmode' onClick={toggleTheme}>
           Switch to {theme === 'light' ? 'Dark Mode' : 'Light Mode'}
