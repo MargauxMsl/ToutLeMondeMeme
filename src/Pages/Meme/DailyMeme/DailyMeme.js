@@ -32,7 +32,7 @@ const Modal = ({ dailyMeme }) => {
       </span>
       <div className="modal-content">
         <div className="modal-header">
-          <h1 className="modal-title">Today's Meme :</h1>
+          <h1 className="modal-title">Le meme du jour :</h1>
         </div>
         <div className="modal-body">
           <div className="modal-container">
@@ -50,7 +50,7 @@ const Modal = ({ dailyMeme }) => {
             ) : (
               <p>Loading...</p>
             )}
-            <h1 className="description">Make the best meme of the day !</h1>
+            <h1 className="description">Créer le prochain meme tendance!</h1>
           </div>
         </div>
       </div>
