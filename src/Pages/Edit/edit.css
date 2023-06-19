@@ -39,8 +39,8 @@
 }
 .button {
   position: absolute;
-  top: 55%;
-  right: 200px;
+  top: 60%;
+  right: 60px;
   transform: translateY(-50%);
 }
 

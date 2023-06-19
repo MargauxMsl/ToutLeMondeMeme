@@ -61,7 +61,7 @@ const Edit = () => {
       <header>
         <div className="container edit__container">
           <h5>Edit</h5>
-          <h1>YOUR MEME</h1>
+          <h1>our Meme</h1>
           <h5 className="text-light">Add custom quotes, etc.</h5>
         </div>
       </header>
