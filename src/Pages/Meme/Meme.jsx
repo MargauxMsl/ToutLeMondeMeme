@@ -30,6 +30,8 @@
   import { Link, useNavigate } from 'react-router-dom';
   import UploadIcon from '@mui/icons-material/Upload';
   import "./logo-lightmode.png";
+  import Modal from './DailyMeme/DailyMeme';
+
   
   
   function MemeComponent() {
@@ -105,6 +107,7 @@
     return (
       <>
       <header>
+      <Modal/>
         <div className="container edit__container">
           <img
             src={require("./logo-lightmode.png")}
